@@ -1,46 +1,60 @@
 # Nvidia GPU Sales Dashboard
 
-A Power BI dashboard analyzing synthetic Nvidia GPU sales data for 2026 — built to answer the kind of questions a sales or product team would actually ask: which GPU models are moving, which regions are driving revenue, how customer satisfaction tracks against price, and how sales trend over time.
+A Power BI dashboard analyzing synthetic Nvidia GPU sales data for 2026, designed to answer core commercial questions: which products are selling, which regions are driving revenue, how price relates to customer satisfaction, and how sales are trending over time.
 
-Dataset
+*Note: this is a synthetic dataset built for portfolio purposes, not real Nvidia sales data.*
 
-The report is built on a single table, nvidia_gpu_sales_synthetic_2026, containing GPU sales transactions with fields covering:
+---
 
-Product details — gpu_model, gpu_family
-Sales metrics — revenue, units sold, price
-Customer context — customer_segment, satisfaction scores
-Geography — region
-Inventory status — stock_status
-Time — sale_date, broken into a full Year → Quarter → Month → Day hierarchy for trend analysis
+## Dataset
 
-(Note: this is a synthetic dataset built for portfolio/practice purposes, not real Nvidia sales data.)
+| Category | Fields |
+|---|---|
+| Product | `gpu_model`, `gpu_family` |
+| Sales | Revenue, units sold, price |
+| Customer | `customer_segment`, satisfaction score |
+| Geography | `region` |
+| Inventory | `stock_status` |
+| Time | `sale_date` (Year → Quarter → Month → Day hierarchy) |
 
-Report Pages
-Page 1 — Sales Overview
+All fields come from a single table: `nvidia_gpu_sales_synthetic_2026`.
 
-This is the main dashboard, titled "Nvidia GPU Sales" at the top, and it's built around four key numbers you can see at a glance:
+---
 
-Total Revenue
-Total Units (sold)
-Average Price
-Average Satisfaction (customer satisfaction score)
+## Report Pages
 
-Below those headline cards, the page breaks the story down from several angles:
+### Page 1 — Sales Overview
 
-A donut chart splitting total units by stock_status — a quick read on how much of what's been sold is in stock, backordered, or discontinued.
-A clustered column chart of total revenue by region, showing which markets are contributing the most.
-A clustered bar chart of total revenue by gpu_model, ranking individual GPU models against each other.
-A 100% stacked column chart of total units by gpu_family, showing how the unit mix shifts across product families.
-A line chart of total revenue over time, using the full date hierarchy (Year/Quarter/Month/Day), so you can drill from a yearly trend all the way down to daily sales.
+The primary dashboard page, titled **"Nvidia GPU Sales."**
 
-Three slicers sit alongside the visuals, letting you filter the whole page by region, GPU model, and customer segment — so you can isolate, say, just the enterprise segment in one region and watch every chart update together.
+**KPI Cards**
+| Metric | What it shows |
+|---|---|
+| Total Revenue | Overall sales revenue |
+| Total Units | Overall units sold |
+| Average Price | Mean selling price per unit |
+| Average Satisfaction | Mean customer satisfaction score |
 
-Page 2 — Model Detail (in progress)
+**Visuals**
+| Visual | Breakdown | Purpose |
+|---|---|---|
+| Donut chart | Total units by `stock_status` | Read on stock health — in stock vs. backordered vs. discontinued |
+| Clustered column chart | Total revenue by `region` | Compares regional sales performance |
+| Clustered bar chart | Total revenue by `gpu_model` | Ranks individual GPU models by revenue |
+| 100% stacked column chart | Total units by `gpu_family` | Shows the shifting unit mix across product families |
+| Line chart | Total revenue over time | Trend view using the full date hierarchy, drillable from year down to day |
 
-The second page currently holds a single gpu_model slicer and appears to be a work-in-progress detail view — likely intended as a drill-down page for exploring an individual GPU model's performance once fully built out.
+**Filters**
+Three slicers — **region**, **GPU model**, and **customer segment** — filter every visual on the page simultaneously, so a single selection (e.g. one region and one segment) updates the entire view at once.
 
-Tools & Format
+### Page 2 — Model Detail (In Progress)
 
-Built in Power BI Desktop using the newer PBIR (Power BI Enhanced Report) project format, where each page and visual is stored as its own readable JSON file rather than one packed binary blob — this makes the report easier to diff and version-control alongside the rest of a portfolio project.
+Currently contains a single `gpu_model` slicer. This appears to be a planned drill-down page for individual GPU model performance, not yet built out with supporting visuals.
 
-To open: load the .pbix file directly in Power BI Desktop.
+---
+
+## Tools & Format
+
+Built in Power BI Desktop using the PBIR (Power BI Enhanced Report) project format, which stores each page and visual as its own readable JSON file rather than a single packed binary. This makes the report easier to diff and version-control alongside the rest of a portfolio project.
+
+**To open:** load the `.pbix` file directly in Power BI Desktop.
